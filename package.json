@@ -1,0 +1,56 @@
+{
+  "name": "company-crud",
+  "version": "1.0.0",
+  "description": "CRUD de empresa e funcionarios",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThiagoOliveira001/company-crud.git"
+  },
+  "keywords": [
+    "CRUD"
+  ],
+  "author": "Thiago Silva de Oliveira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThiagoOliveira001/company-crud/issues"
+  },
+  "homepage": "https://github.com/ThiagoOliveira001/company-crud#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "helmet": "^4.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.6.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.6.5",
+    "sucrase": "^3.20.0",
+    "swagger-jsdoc": "^6.1.0",
+    "swagger-ui-express": "^4.1.6",
+    "yup": "^0.32.9"
+  },
+  "devDependencies": {
+    "@sucrase/jest-plugin": "^2.1.0",
+    "@types/jest": "^26.0.24",
+    "eslint": "^7.30.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-prettier": "^3.4.0",
+    "faker": "^5.5.3",
+    "git-commit-msg-linter": "^3.2.6",
+    "husky": "^7.0.1",
+    "jest": "^27.0.6",
+    "lint-staged": "^11.0.1",
+    "nodemon": "^2.0.12",
+    "prettier": "^2.3.2",
+    "sequelize-cli": "^6.2.0",
+    "supertest": "^6.1.3"
+  }
+}
