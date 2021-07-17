@@ -21,6 +21,17 @@ class CompanyController {
 
     return res.created(created);
   }
+
+  async list(req, res) {
+    const filter = {
+      quantity: req.query.quantity,
+      page: req.query.page,
+      name: req.query.name,
+    };
+    const companies = await CompanyService.list(filter);
+
+    return res.ok(companies);
+  }
 }
 
 export default new CompanyController();
