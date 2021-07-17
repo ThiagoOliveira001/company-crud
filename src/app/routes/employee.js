@@ -103,4 +103,53 @@ routes.post('/', employeeValidator, EmployeeController.create);
  */
 routes.put('/:id', employeeValidator, EmployeeController.update);
 
+/**
+ * @openapi
+ * /employee:
+ *   get:
+ *     tags:
+ *       - Employee
+ *     summary: Lista empregados da empresa
+ *     parameters:
+ *       - name: page
+ *         in: query
+ *         schema:
+ *           type: integer
+ *       - name: quantity
+ *         in: query
+ *         schema:
+ *           type: integer
+ *       - name: name
+ *         in: query
+ *         description: Filtra por nome
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Retorna uma lista de funcionários com numero de páginas e total
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 pages:
+ *                   type: integer
+ *                 total:
+ *                   type: integer
+ *                 employees:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: integer
+ *                       name:
+ *                         type: string
+ *                       profession_name:
+ *                         type: string
+ *       401:
+ *         $ref: '#/components/schemas/Http401'
+ */
+routes.get('/', EmployeeController.listByCompany);
+
 export default routes;

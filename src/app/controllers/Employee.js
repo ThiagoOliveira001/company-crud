@@ -1,4 +1,5 @@
 import Employee from '../models/Employee';
+import EmployeeService from '../services/Employee';
 
 class EmployeeController {
   async create(req, res) {
@@ -23,6 +24,18 @@ class EmployeeController {
     await Employee.update(employee, { where: { id: req.params.id } });
 
     return res.ok({ message: 'Atualizado com sucesso' });
+  }
+
+  async listByCompany(req, res) {
+    const filter = {
+      quantity: req.query.quantity,
+      page: req.query.page,
+      name: req.query.name,
+      company_id: req.query.company_id,
+    };
+    const employees = await EmployeeService.list(filter);
+
+    return res.ok(employees);
   }
 }
 
