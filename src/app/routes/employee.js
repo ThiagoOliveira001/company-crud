@@ -190,4 +190,32 @@ routes.get('/', EmployeeController.listByCompany);
  */
 routes.get('/:id', EmployeeController.listById);
 
+/**
+ * @openapi
+ * /employee/{id}:
+ *   delete:
+ *     tags:
+ *       - Employee
+ *     summary: Deleta um funcionário
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Retorna mensagem de sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *       401:
+ *         $ref: '#/components/schemas/Http401'
+ */
+routes.delete('/:id', EmployeeController.remove);
+
 export default routes;
