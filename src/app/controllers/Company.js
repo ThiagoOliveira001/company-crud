@@ -32,6 +32,28 @@ class CompanyController {
 
     return res.ok(companies);
   }
+
+  async update(req, res) {
+    const company = {
+      id: req.params.id,
+      name: req.body.name,
+      address: req.body.address,
+      zipcode: req.body.zipcode,
+      neighborhood: req.body.neighborhood,
+      number: req.body.number,
+      complement: req.body.complement,
+      city: req.body.city,
+      uf: req.body.uf,
+      phone: req.body.phone,
+    };
+    const updated = await CompanyService.update(company);
+
+    if (updated) {
+      return res.badRequest({ message: 'Já existe uma empresa com esse nome' });
+    }
+
+    return res.ok({ message: 'Atualizado com sucesso' });
+  }
 }
 
 export default new CompanyController();

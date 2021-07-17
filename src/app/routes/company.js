@@ -142,4 +142,76 @@ routes.post('/', companyValidator, CompanyController.create);
  */
 routes.get('/', CompanyController.list);
 
+/**
+ * @openapi
+ * /company/{id}:
+ *   put:
+ *     tags:
+ *       - Company
+ *     summary: Atualiza os dados da empresa
+ *     parameters:
+ *       - name: id
+ *         in: integer
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       description: Dados da empresa
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 required: true
+ *               address:
+ *                 type: string
+ *                 required: true
+ *                 description: logradouro
+ *               zipcode:
+ *                 type: string
+ *                 required: true
+ *                 description: CEP
+ *               neighborhood:
+ *                 type: string
+ *                 required: true
+ *                 description: bairro
+ *               number:
+ *                 type: string
+ *                 required: true
+ *                 description: numero do estabelecimento
+ *               complement:
+ *                 type: string
+ *                 required: true
+ *                 description: complemento do endereço
+ *               city:
+ *                 type: string
+ *                 required: true
+ *                 descripiton: cidade
+ *               uf:
+ *                 type: string
+ *                 required: true
+ *               phone:
+ *                 type: string
+ *                 required: true
+ *                 description: telefone ou celular
+ *     responses:
+ *       200:
+ *         description: Retorna uma mensagem de sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *       400:
+ *         $ref: '#/components/schemas/Http400'
+ *       401:
+ *         $ref: '#/components/schemas/Http401'
+ */
+routes.put('/:id', companyValidator, CompanyController.update);
+
 export default routes;

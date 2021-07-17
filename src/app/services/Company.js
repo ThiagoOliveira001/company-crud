@@ -40,6 +40,26 @@ class CompanyService {
       total: count,
     };
   }
+
+  async update(company) {
+    const exists = await Company.findOne({
+      where: {
+        name: {
+          [Op.iLike]: company.name,
+        },
+        id: {
+          [Op.ne]: company.id,
+        },
+      },
+    });
+
+    if (exists) {
+      return false;
+    }
+    await Company.update(company);
+
+    return true;
+  }
 }
 
 export default new CompanyService();
