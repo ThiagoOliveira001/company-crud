@@ -4,7 +4,7 @@ class ProfessionController {
   async list(req, res) {
     const professions = await Profession.findAll();
 
-    return res.ok({ content: professions });
+    return res.ok(professions);
   }
 }
 
