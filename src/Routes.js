@@ -8,6 +8,7 @@ import {
   profession_route,
   zipcode_route,
   company_route,
+  employee_route,
 } from './app/routes';
 
 const routes = new Router();
@@ -21,5 +22,7 @@ routes.use('/profession', profession_route);
 routes.use('/zipcode', zipcode_route);
 
 routes.use('/company', company_route);
+
+routes.use('/employee', employee_route);
 
 export default routes;
