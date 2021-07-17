@@ -152,4 +152,42 @@ routes.put('/:id', employeeValidator, EmployeeController.update);
  */
 routes.get('/', EmployeeController.listByCompany);
 
+/**
+ * @openapi
+ * /employee/{id}:
+ *   get:
+ *     tags:
+ *       - Employee
+ *     summary: Pega os dados de um funcionário
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Dados do funcionário
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: integer
+ *                 name:
+ *                   type: string
+ *                 profession_id:
+ *                   type: integer
+ *                 company_id:
+ *                   type: integer
+ *                 salary:
+ *                   type: number
+ *                 profession_name:
+ *                   type: string
+ *       401:
+ *         $ref: '#/components/schemas/Http401'
+ */
+routes.get('/:id', EmployeeController.listById);
+
 export default routes;

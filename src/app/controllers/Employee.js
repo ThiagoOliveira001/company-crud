@@ -37,6 +37,12 @@ class EmployeeController {
 
     return res.ok(employees);
   }
+
+  async listById(req, res) {
+    const employee = await EmployeeService.listById(req.params.id);
+
+    return res.ok(employee);
+  }
 }
 
 export default new EmployeeController();

@@ -38,6 +38,28 @@ class EmployeeService {
       total: count,
     };
   }
+
+  async listById(id) {
+    const employee = await Employee.findByPk(id, {
+      raw: true,
+      attributes: [
+        'id',
+        'name',
+        'profession_id',
+        'company_id',
+        'salary',
+        [Sequelize.col('Profession.name'), 'profession_name'],
+      ],
+      include: [
+        {
+          model: Profession,
+          attributes: [],
+        },
+      ],
+    });
+
+    return employee;
+  }
 }
 
 export default new EmployeeService();
