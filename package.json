@@ -2,7 +2,7 @@
   "name": "company-crud",
   "version": "1.0.0",
   "description": "CRUD de empresa e funcionarios",
-  "main": "App.js",
+  "main": "src/Server.js",
   "scripts": {
     "test": "jest",
     "dev": "nodemon"
