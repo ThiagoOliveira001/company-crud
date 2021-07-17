@@ -1,5 +1,6 @@
 import Profession from './Profession';
+import Company from './Company';
 
-const models = [Profession];
+const models = [Profession, Company];
 
 export default models;
