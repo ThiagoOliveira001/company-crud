@@ -57,4 +57,50 @@ const routes = new Router();
  */
 routes.post('/', employeeValidator, EmployeeController.create);
 
+/**
+ * @openapi
+ * /employee/{id}:
+ *   put:
+ *     tags:
+ *       - Employee
+ *     summary: Atualiza os dados do funcionário
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       description: dados do funcionário
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               profession_id:
+ *                 type: integer
+ *               company_id:
+ *                 type: integer
+ *               salary:
+ *                 type: number
+ *     responses:
+ *       200:
+ *         description: Mensagem de atualização bem sucedida
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *       400:
+ *         $ref: '#/components/schemas/Http400'
+ *       401:
+ *         $ref: '#/components/schemas/Http401'
+ */
+routes.put('/:id', employeeValidator, EmployeeController.update);
+
 export default routes;
