@@ -3,7 +3,9 @@ export default async function exceptionHandler(err, req, res, next) {
     'Ocorreu um erro inesperado no servidor, tente novamente mais tarde';
 
   if (process.env.NODE_ENV != 'PRODUCTION') {
-    return res.status(500).json({ message: standard_error_message, err });
+    return res
+      .status(500)
+      .json({ message: standard_error_message, err: err.stack });
   }
 
   return res.status(500).json({ message: standard_error_message });
