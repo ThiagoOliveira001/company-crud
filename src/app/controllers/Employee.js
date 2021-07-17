@@ -50,6 +50,13 @@ class EmployeeController {
 
     return res.ok({ message: 'Excluido com sucesso' });
   }
+
+  async removeByCompany(req, res) {
+    const { company_id } = req.params;
+    await Employee.destroy({ where: { company_id } });
+
+    return res.ok({ message: 'Excluido com sucesso' });
+  }
 }
 
 export default new EmployeeController();

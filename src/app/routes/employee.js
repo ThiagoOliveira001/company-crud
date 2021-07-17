@@ -218,4 +218,32 @@ routes.get('/:id', EmployeeController.listById);
  */
 routes.delete('/:id', EmployeeController.remove);
 
+/**
+ * @openapi
+ * /employee/company/{company_id}:
+ *   delete:
+ *     tags:
+ *       - Employee
+ *     summary: Deleta todos os funcionarios da empresa
+ *     parameters:
+ *       - name: company_id
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Retorna uma mensagem de sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *       401:
+ *         $ref: '#/components/schemas/Http401'
+ */
+routes.delete('/company/:company_id', EmployeeController.removeByCompany);
+
 export default routes;
