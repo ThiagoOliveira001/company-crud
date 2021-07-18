@@ -5,7 +5,9 @@
   "main": "src/Server.js",
   "scripts": {
     "test": "jest",
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "prestart": "sucrase ./src -d ./build --transforms imports",
+    "start": "node build/Server.js"
   },
   "repository": {
     "type": "git",
