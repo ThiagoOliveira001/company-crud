@@ -62,6 +62,12 @@ class CompanyService {
 
     return true;
   }
+
+  async listById(id) {
+    const company = await Company.findByPk(id);
+
+    return company;
+  }
 }
 
 export default new CompanyService();

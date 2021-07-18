@@ -214,4 +214,54 @@ routes.get('/', CompanyController.list);
  */
 routes.put('/:id', companyValidator, CompanyController.update);
 
+/**
+ * @openapi
+ * /company/{id}:
+ *   get:
+ *     tags:
+ *       - Company
+ *     summary: Busca dados da empresa
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Retorna os dados da empresa
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               proprerties:
+ *                 id:
+ *                   type: integer
+ *                 name:
+ *                   type: string
+ *                 address:
+ *                   type: string
+ *                 zipcode:
+ *                   type: string
+ *                 neighborhood:
+ *                   type: string
+ *                 number:
+ *                   type: string
+ *                 complement:
+ *                   type: string
+ *                 city:
+ *                   type: string
+ *                 uf:
+ *                   type: string
+ *                 phone:
+ *                   type: string
+ *                 created_at:
+ *                   type: string
+ *                 updated_at:
+ *                   type: string
+ *       401:
+ *         $ref: '#/components/schemas/Http401'
+ */
+routes.get('/:id', CompanyController.listById);
+
 export default routes;

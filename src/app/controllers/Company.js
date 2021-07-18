@@ -54,6 +54,12 @@ class CompanyController {
 
     return res.ok({ message: 'Atualizado com sucesso' });
   }
+
+  async listById(req, res) {
+    const company = await CompanyService.listById(req.params.id);
+
+    return res.ok(company);
+  }
 }
 
 export default new CompanyController();
