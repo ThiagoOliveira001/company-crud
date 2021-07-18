@@ -3,6 +3,7 @@ import swaggerJsDocs from 'swagger-jsdoc';
 const host = `${process.env.BASE_HOST}${process.env.BASE_PATH}`;
 
 const swaggerDefinition = {
+  openapi: '3.0.0',
   info: {
     title: 'API Company CRUD',
     version: '1.0.0',

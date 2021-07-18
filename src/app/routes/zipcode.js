@@ -13,7 +13,7 @@ const routes = new Router();
  *     summary: Busca endereço pelo CEP
  *     parameters:
  *       - name: zipcode
- *         in: zipcode
+ *         in: path
  *         required: true
  *         schema:
  *           type: string
@@ -25,6 +25,19 @@ const routes = new Router();
  *           application/json:
  *             schema:
  *               type: object
+ *               properties:
+ *                 address:
+ *                   type: string
+ *                   description: Logradouro
+ *                 neighborhood:
+ *                   type: string
+ *                   description: Bairro
+ *                 city:
+ *                   type: string
+ *                   description: cidade
+ *                 uf:
+ *                   type: string
+ *                   description: Unidade da federação
  *       404:
  *         description: Endereço não encontrado para o CEP
  *         content:
