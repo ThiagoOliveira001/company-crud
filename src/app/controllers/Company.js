@@ -48,7 +48,7 @@ class CompanyController {
     };
     const updated = await CompanyService.update(company);
 
-    if (updated) {
+    if (!updated) {
       return res.badRequest({ message: 'Já existe uma empresa com esse nome' });
     }
 

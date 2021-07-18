@@ -31,7 +31,7 @@ class EmployeeController {
       quantity: req.query.quantity,
       page: req.query.page,
       name: req.query.name,
-      company_id: req.query.company_id,
+      company_id: req.params.company_id,
     };
     const employees = await EmployeeService.list(filter);
 

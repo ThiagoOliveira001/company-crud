@@ -53,10 +53,10 @@ class CompanyService {
         },
       },
     });
-
     if (exists) {
       return false;
     }
+
     await Company.update(company, {
       where: { id: company.id },
     });

@@ -105,7 +105,7 @@ routes.put('/:id', employeeValidator, EmployeeController.update);
 
 /**
  * @openapi
- * /employee:
+ * /employee/company/{company_id}:
  *   get:
  *     tags:
  *       - Employee
@@ -124,6 +124,11 @@ routes.put('/:id', employeeValidator, EmployeeController.update);
  *         description: Filtra por nome
  *         schema:
  *           type: string
+ *       - name: company_id
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: integer
  *     responses:
  *       200:
  *         description: Retorna uma lista de funcionários com numero de páginas e total
@@ -150,7 +155,7 @@ routes.put('/:id', employeeValidator, EmployeeController.update);
  *       401:
  *         $ref: '#/components/schemas/Http401'
  */
-routes.get('/', EmployeeController.listByCompany);
+routes.get('/company/:company_id', EmployeeController.listByCompany);
 
 /**
  * @openapi
