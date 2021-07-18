@@ -234,7 +234,7 @@ routes.put('/:id', companyValidator, CompanyController.update);
  *           application/json:
  *             schema:
  *               type: object
- *               proprerties:
+ *               properties:
  *                 id:
  *                   type: integer
  *                 name:
@@ -263,5 +263,35 @@ routes.put('/:id', companyValidator, CompanyController.update);
  *         $ref: '#/components/schemas/Http401'
  */
 routes.get('/:id', CompanyController.listById);
+
+/**
+ * @openapi
+ * /company/{id}:
+ *   delete:
+ *     tags:
+ *       - Company
+ *     summary: Deleta uma empresa
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Retorna mensagem de sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *       400:
+ *         $ref: '#/components/schemas/Http400'
+ *       401:
+ *         $ref: '#/components/schemas/Http401'
+ */
+routes.delete('/:id', CompanyController.remove);
 
 export default routes;

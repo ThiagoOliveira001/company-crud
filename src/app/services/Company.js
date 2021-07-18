@@ -1,5 +1,6 @@
 import { Op } from 'sequelize';
 import Company from '../models/Company';
+import Employee from '../models/Employee';
 
 class CompanyService {
   async create(company) {
@@ -67,6 +68,18 @@ class CompanyService {
     const company = await Company.findByPk(id);
 
     return company;
+  }
+
+  async remove(id) {
+    const employee = await Employee.findOne({ where: { company_id: id } });
+
+    if (employee) {
+      return false;
+    }
+
+    await Company.destroy({ where: { id } });
+
+    return true;
   }
 }
 

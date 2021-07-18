@@ -60,6 +60,18 @@ class CompanyController {
 
     return res.ok(company);
   }
+
+  async remove(req, res) {
+    const removed = await CompanyService.remove(req.params.id);
+
+    if (!removed) {
+      return res.badRequest({
+        message: 'Essa empresa possui funcionários cadastrados',
+      });
+    }
+
+    return res.ok({ message: 'Excluido com sucesso' });
+  }
 }
 
 export default new CompanyController();
