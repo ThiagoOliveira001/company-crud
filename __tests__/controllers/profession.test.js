@@ -11,10 +11,10 @@ describe('Test profession controller', () => {
     const res = {
       ok: res_ok,
     };
-    const result = await sut.list({}, res);
+    const response = await sut.list({}, res);
 
     expect(res_ok).toHaveBeenCalledWith(expect.any(Object));
     expect(Profession.findAll).toHaveBeenCalled();
-    expect(result).toHaveProperty('content', expect.any(Array));
+    expect(response).toEqual(expect.any(Array));
   });
 });
