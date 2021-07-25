@@ -143,4 +143,60 @@ describe('Test company controller', () => {
       })
     );
   });
+
+  it('should be able to return a company by id', async () => {
+    jest.spyOn(CompanyService, 'listById').mockResolvedValueOnce({});
+
+    const req = {
+      params: {
+        id: 1,
+      },
+    };
+    const ok = jest.fn().mockImplementationOnce((data) => data);
+    const res = { ok };
+    const response = await sut.listById(req, res);
+
+    expect(ok).toHaveBeenCalled();
+    expect(response).toEqual(expect.any(Object));
+  });
+
+  it('should be able to remove a company', async () => {
+    jest.spyOn(CompanyService, 'remove').mockResolvedValueOnce(true);
+
+    const req = {
+      params: {
+        id: 1,
+      },
+    };
+    const ok = jest.fn().mockImplementationOnce((data) => data);
+    const res = { ok };
+    const response = await sut.remove(req, res);
+
+    expect(response).toEqual(
+      expect.objectContaining({
+        message: expect.any(String),
+      })
+    );
+    expect(ok).toHaveBeenCalled();
+  });
+
+  it('should not be able to remove a company', async () => {
+    jest.spyOn(CompanyService, 'remove').mockResolvedValueOnce(false);
+
+    const req = {
+      params: {
+        id: 1,
+      },
+    };
+    const badRequest = jest.fn().mockImplementationOnce((data) => data);
+    const res = { badRequest };
+    const response = await sut.remove(req, res);
+
+    expect(badRequest).toHaveBeenCalled();
+    expect(response).toEqual(
+      expect.objectContaining({
+        message: expect.any(String),
+      })
+    );
+  });
 });
